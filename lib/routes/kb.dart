@@ -18,7 +18,6 @@ class SchedulePage extends StatefulWidget {
 }
 
 class _SchedulePageState extends State<SchedulePage> {
-
   var semesterValue, semesters, weekValue, weekNum, _uid, _passwd;
 
 //  List schoolArea = ["梦溪", "长山"];
@@ -299,7 +298,7 @@ class _SchedulePageState extends State<SchedulePage> {
         }
       }
       // 同一位置有多个课程
-      if (item.containsKey('otherClasses') && added == false) {
+      if (item.containsKey('otherClass-es') && added == false) {
         classInWeek(item['otherClasses'], other: true);
       }
     }
@@ -359,7 +358,7 @@ class _SchedulePageState extends State<SchedulePage> {
                               " ",
                         ),
                         Text('课程号:' +
-                                courseList[index]['courseNum'].toString() ??
+                            courseList[index]['courseNum'].toString() ??
                             " "),
                         Text(
                             '教室:' + courseList[index]['classroom'].toString() ??
@@ -483,9 +482,9 @@ class _SchedulePageState extends State<SchedulePage> {
                             initValue: course == null
                                 ? ''
                                 : course[index]['classWeek']
-                                    .toString()
-                                    .substring(0,
-                                        course[index]['classWeek'].length - 3),
+                                .toString()
+                                .substring(0,
+                                course[index]['classWeek'].length - 3),
                             hintText: "连续周次使用-连接，隔开的周次使用,分隔"),
                       ),
                       SizedBox(
@@ -494,7 +493,7 @@ class _SchedulePageState extends State<SchedulePage> {
                       Container(
                         child: modifyCardTextField('老师', 'teacher',
                             initValue:
-                                course == null ? '' : course[index]['teacher']),
+                            course == null ? '' : course[index]['teacher']),
                       ),
                     ],
                   ),
@@ -575,8 +574,8 @@ class _SchedulePageState extends State<SchedulePage> {
                   fontSize: 14,
                   color: wlist[i]['otherWeek'] != null
                       ? otherWeekVisible == false
-                          ? Colors.transparent
-                          : Colors.white
+                      ? Colors.transparent
+                      : Colors.white
                       : Colors.white,
                   decoration: TextDecoration.none,
                 ),
@@ -587,7 +586,7 @@ class _SchedulePageState extends State<SchedulePage> {
                     color: wlist[i]['otherWeek'] != null
                         ? otherWeekColor[otherWeekVisible.toString()]
                         : Color(int.parse(colorArrays[int.parse(
-                            Random().nextInt(colorArrays.length).toString())])),
+                        Random().nextInt(colorArrays.length).toString())])),
                   ),
 //                  width: MediaQuery.of(context).size.width / 8,
                   height: 117,
@@ -747,9 +746,9 @@ class _SchedulePageState extends State<SchedulePage> {
       return BoxDecoration(color: Colors.white);
     } else {
       return BoxDecoration(
-        image: DecorationImage(
-          image: FileImage(File(imgBackground)),
-        )
+          image: DecorationImage(
+            image: FileImage(File(imgBackground)),
+          )
       );
     }
   }
@@ -818,49 +817,48 @@ class _SchedulePageState extends State<SchedulePage> {
         onRefresh: getSchedule,
         child: Container(
           decoration: _buildBackground(),
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                new Container(
-                  height: 10,
-                  color: Colors.white,
-                ),
+          child: ListView(
+            physics: AlwaysScrollableScrollPhysics(),
+            children: <Widget>[
+              new Container(
+                height: 10,
+                color: Colors.white,
+              ),
 
-                // 月份 日期
-                DefaultTextStyle(
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black87,
-                    decoration: TextDecoration.none,
+              // 月份 日期
+              DefaultTextStyle(
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black87,
+                  decoration: TextDecoration.none,
+                ),
+                child: timeRow(),
+              ),
+              new Container(
+                height: 2,
+              ),
+              // 当前节次对应课程
+              kbBuild(1),
+              kbBuild(2),
+              kbBuild(3),
+              kbBuild(4),
+              kbBuild(5),
+              Row(
+                children: <Widget>[
+                  Container(
+                    color: Colors.white,
+                    width: 30,
+                    child: Text(S.of(context).classMore),
                   ),
-                  child: timeRow(),
-                ),
-                new Container(
-                  height: 2,
-                ),
-                // 当前节次对应课程
-                kbBuild(1),
-                kbBuild(2),
-                kbBuild(3),
-                kbBuild(4),
-                kbBuild(5),
-                Row(
-                  children: <Widget>[
-                    Container(
-                      color: Colors.white,
-                      width: 30,
-                      child: Text(S.of(context).classMore),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                          color: Colors.white, child: Text(classMore ?? '无')),
-                    )
-                  ],
-                )
-              ],
-            ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                        color: Colors.white, child: Text(classMore ?? '无')),
+                  )
+                ],
+              )
+            ],
           ),
         ),
       ),

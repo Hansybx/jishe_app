@@ -5,6 +5,8 @@ import 'package:flutter_app/routes/kb.dart';
 import 'package:flutter_app/routes/myPage/me.dart';
 import 'package:flutter_app/widgets/iconFont.dart';
 
+import 'curriculum.dart';
+
 class Tabs extends StatefulWidget {
   @override
   _TabsState createState() => _TabsState();
@@ -14,7 +16,7 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   TabController controller;
 
-  List<Widget> _pageList = [SchedulePage(), HomePage(), MyPage()];
+  List<Widget> _pageList = [Curriculum(), HomePage(), MyPage()];
 
   @override
   void initState() {
