@@ -70,4 +70,7 @@ class LocalShare {
 
   // 提前周次
   static String WEEK_ADVANCE = "week_advance";
+
+  //后台返回的课表数据
+  static String CLASS_SAVE="class_save";
 }
