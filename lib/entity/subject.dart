@@ -15,11 +15,14 @@ class Subject {
   //上课时间,比如说是第几周
   Set<String> time = Set();
 
+  //用来显示的上课时间
+  String classTime;
+
   //上课地点
   String place;
 
   //星期几上的课
-  int weekNum;
+  int weekDay;
 
   //科目颜色,这里是颜色数组里的index
   int color;
@@ -51,6 +54,7 @@ class Subject {
         subjectName = msgList[1];
         teacherName = msgList[2];
         setTime(time, msgList[3]);
+        classTime=msgList[3];
         place = msgList[4];
         if(place.contains("-"))
         {
@@ -61,6 +65,7 @@ class Subject {
       {
         subjectNum = msgList[0];
         subjectName = msgList[1];
+        classTime=msgList[3];
         msgList.forEach((element) {
           if(element.contains("周"))
             {
@@ -71,7 +76,7 @@ class Subject {
         place="";
       }
 
-    weekNum = day7[day];
+    weekDay = day7[day];
   }
 
 
@@ -104,7 +109,7 @@ class Subject {
   //获得字符串来吧类存储在本地
   String getStringSave()
   {
-    return message+"@"+subjectNum+"@"+subjectName+"@"+teacherName+"@"+time.join("%")+"@"+place+"@"+weekNum.toString()+"@"+color.toString();
+    return message+"@"+subjectNum+"@"+subjectName+"@"+teacherName+"@"+time.join("%")+"@"+place+"@"+weekDay.toString()+"@"+color.toString();
   }
 
   //从本地存储的字符串获得类
@@ -118,7 +123,7 @@ class Subject {
         subjectName=infoList[2];
         teacherName=infoList[3];
         place=infoList[5];
-        weekNum=int.parse(infoList[6]);
+        weekDay=int.parse(infoList[6]);
         color=int.parse(infoList[7]);
         List<String> times=infoList[4].split("%");
         times.forEach((element) {

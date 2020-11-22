@@ -73,4 +73,7 @@ class LocalShare {
 
   //后台返回的课表数据
   static String CLASS_SAVE="class_save";
+
+  //记录课表使用的风格
+  static String KB_STYLE="kb_style";
 }

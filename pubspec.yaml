@@ -27,7 +27,7 @@ dependencies:
   flutter_spinkit: ^4.1.2+1
   flutter_webview_plugin: ^0.3.11
   flutter_icons: ^1.1.0
-  flutter_swiper: ^1.1.6
+  flutter_swiper : ^1.1.6
   flutter_xupdate: ^0.0.3
 
   flustars: ^0.3.3
@@ -42,6 +42,7 @@ dependencies:
   sy_flutter_qiniu_storage: ^0.2.1
   toast: ^0.1.5
   url_launcher: ^5.5.0
+  marquee: ^1.6.1
 
 dev_dependencies:
   flutter_test:

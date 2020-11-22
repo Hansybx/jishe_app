@@ -46,6 +46,10 @@ class Constant {
   // swiper imgs
   static final String SWIPERIMGS =
       'https://guohe3.cn/api/v1/mobile/swiper/imgs';
+
+  //邓氏风格里面的跑马灯消息
+  static final String MARQUEEMESSAGE =
+      'http://114.116.242.225/api/v1/getMarqueeMessage';
 //  天气
 //  static final String WEATHER = 'https://free-api.heweather.net/s6/weather/now?location=auto_ip&key=';
 }

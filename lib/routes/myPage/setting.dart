@@ -7,7 +7,6 @@ import 'package:flutter_app/common/stringFile.dart';
 import 'package:flutter_app/generated/l10n.dart';
 import 'package:flutter_app/widgets/dialog.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -31,7 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
   final picker = ImagePicker();
 
   bool flag, classFlag;
-  String language, schoolArea, imgBackground;
+  String language, schoolArea, imgBackground,kbstyle;
   List weekAdvance = [-2, -1, 0, 1, 2];
 
   @override
@@ -42,8 +41,48 @@ class _SettingsPageState extends State<SettingsPage> {
     classFlag = SpUtil.getBool(LocalShare.CLASS_VISIBLE, defValue: true);
     language = SpUtil.getString(LocalShare.LANGUAGE, defValue: "简体中文");
     schoolArea = SpUtil.getString(LocalShare.SCHOOLAREA, defValue: "长山");
+    kbstyle=SpUtil.getString(LocalShare.KB_STYLE,defValue:"韩氏风格");
   }
 
+  //风格选择器,默认使用韩政原风格
+  Widget styleChoose()
+  {
+    return ListTile(
+      title: Text(
+        "课表风格选择(重启后有效)",
+        style: whiteBoldText,
+      ),
+      subtitle: Text(
+        kbstyle,
+        style: greyText,
+      ),
+      trailing: Icon(
+        Icons.keyboard_arrow_right,
+        color: Colors.grey.shade400,
+      ),
+      onTap: () {
+        showDialog<String>(
+            context: context,
+            builder: (context) {
+              String selectValue = '';
+              List<String> valueList = ["韩氏风格", "邓氏风格"];
+              return RadioAlertDialog(
+                  showCancel: false,
+                  showConfirm: false,
+                  title: "课表风格选择",
+                  selectValue: selectValue,
+                  valueList: valueList);
+            }).then((value) {
+          if (value != null) {
+            SpUtil.putString(LocalShare.KB_STYLE, value);
+            setState(() {
+              kbstyle = value;
+            });
+          }
+        });
+      },
+    );
+  }
 
   Widget schoolAreaListTile() {
     return ListTile(
@@ -344,6 +383,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   },
                 ),
                 schoolAreaListTile(),
+                styleChoose(),
                 scheduleBackground(),
                 SwitchListTile(
                   title: Text(
