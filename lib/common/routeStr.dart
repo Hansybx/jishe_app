@@ -115,10 +115,10 @@ class RouterPath {
       RouteStr.FEEDBACK: FeedBack(),
       RouteStr.GPA: GPA(),
       RouteStr.CLASSROOM: EmptyClassroom(),
-      RouteStr.BUS: SchoolBus(),
-      RouteStr.MAP: SchoolMap(0),
+      // RouteStr.BUS: SchoolBus(),
+      // RouteStr.MAP: SchoolMap(0),
       RouteStr.PROFILE: Profile(),
-      RouteStr.PE: Pe(),
+      // RouteStr.PE: Pe(),
       RouteStr.SETTING: SettingsPage(),
       RouteStr.SIGNINSYS: SignInSystem(),
     };

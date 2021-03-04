@@ -15,8 +15,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  String _account;
-  String _password;
+  String _account='996235826';
+  String _password='ABC123456';
   bool pwdShow = false;
 
   //表单验证方法

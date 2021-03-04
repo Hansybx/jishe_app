@@ -6,7 +6,8 @@ class Constant {
   static final String SHARE_URL = "https://stu.guohe3.cn/guohe3.0.3.apk";
 
   // 登录
-  static final String LOGIN = 'https://guohe3.cn/api/v1/stu/login';
+  static final String LOGIN = 'http://10.142.24.30:8080/api/v1/stu/login';
+  //'https://guohe3.cn/api/v1/stu/login'
 
 //  反馈
   static final String FEEDBACK = 'https://guohe3.cn/api/v1/stu/feedback/create';
@@ -21,7 +22,8 @@ class Constant {
       'https://guohe3.cn/api/v1/stu/classroom/empty';
 
   //校历
-  static final String CALENDAR = 'https://guohe3.cn/api/v1/stu/school/calendar';
+  static final String CALENDAR = 'http://10.142.24.30:8080/api/v1/stu/school/calendar';
+  //'https://guohe3.cn/api/v1/stu/school/calendar'
 
   // 课表
   static final String KB = 'https://guohe3.cn/api/v1/stu/class/schedule/update';
